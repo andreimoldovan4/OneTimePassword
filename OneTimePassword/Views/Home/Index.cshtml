@@ -1,0 +1,12 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<form method="post" action="/process-form">
+    <label for="userId">User ID:</label>
+    <input type="text" id="userId" name="userId" required>
+
+    <input type="hidden" id="oneTimePassword" name="oneTimePassword">
+
+    <input type="submit" value="Submit">
+</form>
