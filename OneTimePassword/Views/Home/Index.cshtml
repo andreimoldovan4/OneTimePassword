@@ -2,11 +2,32 @@
     ViewData["Title"] = "Home Page";
 }
 
-<form method="post" action="/process-form">
+<form class="login-form">
     <label for="userId">User ID:</label>
     <input type="text" id="userId" name="userId" required>
 
-    <input type="hidden" id="oneTimePassword" name="oneTimePassword">
-
-    <input type="submit" value="Submit">
+    <input type="submit" value="Submit" onclick="generatePassword(event)">
 </form>
+
+<form id="passwordForm" class="hide">
+    <span id="confirmedUserId"></span>
+
+    <label for="userId">Password:</label>
+
+    <input type="text" id="password" name="password">
+
+    <input type="submit" value="Submit" onclick="checkPassword(event)">
+</form>
+
+<div id="passwordContainer" class="hide">
+    <span id="generatedPassword"></span> <span id="timer"></span>
+</div>
+
+<div id="modalContainer" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p id="message"></p>
+    </div>
+</div>
+
+<button id="backButton" class="hide" onclick="goToUserSelection()">Back to user selection</button>
