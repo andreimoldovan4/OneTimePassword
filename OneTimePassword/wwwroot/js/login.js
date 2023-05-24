@@ -1,6 +1,8 @@
 var timer;
 function generatePassword(event) {
-    event.preventDefault();
+    if (event) {
+        event.preventDefault();
+    }
 
     var userId = document.getElementById('userId').value;
     fetch('generate-password', {
@@ -13,17 +15,16 @@ function generatePassword(event) {
         .then((response) => response.json())
         .then((data) => {
             var password = data.password;
+            clearTimer(timer);
 
-            document.getElementById('passwordForm').classList.remove('hide');
-            document.getElementById('passwordContainer').classList.remove('hide');
-            document.getElementById('backButton').classList.remove('hide');
+            document.getElementById('passwordOperationsContainer').classList.remove('hide');
             document.querySelector('.login-form').classList.add('hide');
+            document.getElementById('password').value = '';
             document.getElementById('confirmedUserId').innerText = 'UserId:' + document.getElementById('userId').value;
             document.getElementById('generatedPassword').innerText = 'Your One Time Password: ' +  password;
 
             var timerElement = document.getElementById('timer');
             var remainingTime = 30;
-
             updateTimer();
 
             timer = setInterval(updateTimer, 1000);
@@ -93,10 +94,9 @@ function displayModal(message) {
 }
 
 function goToUserSelection() {
-    document.getElementById('passwordForm').classList.add('hide');
-    document.getElementById('passwordContainer').classList.add('hide');
-    document.getElementById('backButton').classList.add('hide');
+    document.getElementById('passwordOperationsContainer').classList.add('hide');
     document.querySelector('.login-form').classList.remove('hide');
+    document.getElementById('password').value = '';
     clearTimer();
 }
 

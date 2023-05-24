@@ -26,8 +26,11 @@
   margin-left: 20px;
 }
 
-#backButton {
+.btn {
   width: 300px;
+  border: 1px black solid;
+  display: block;
+  margin-bottom: 20px;
 }
 
 .modal {

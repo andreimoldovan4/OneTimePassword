@@ -6,21 +6,26 @@
     <label for="userId">User ID:</label>
     <input type="text" id="userId" name="userId" required>
 
-    <input type="submit" value="Submit" onclick="generatePassword(event)">
+    <input type="submit" value="Submit" class="btn" onclick="generatePassword(event)">
 </form>
 
-<form id="passwordForm" class="hide">
-    <span id="confirmedUserId"></span>
+<div id="passwordOperationsContainer" class="hide">
+    <form id="passwordForm">
+        <span id="confirmedUserId"></span>
 
-    <label for="userId">Password:</label>
+        <label for="userId">Password:</label>
 
-    <input type="text" id="password" name="password">
+        <input type="text" id="password" name="password">
 
-    <input type="submit" value="Submit" onclick="checkPassword(event)">
-</form>
+        <input type="submit" value="Submit" class="btn" onclick="checkPassword(event)">
+    </form>
 
-<div id="passwordContainer" class="hide">
-    <span id="generatedPassword"></span> <span id="timer"></span>
+    <div id="passwordContainer">
+        <span id="generatedPassword"></span> <span id="timer"></span>
+    </div>
+
+    <button class="btn" onclick="generatePassword(event)">Regenerate password</button>
+    <button class="btn" onclick="goToUserSelection()">Back to user selection</button>
 </div>
 
 <div id="modalContainer" class="modal">
@@ -29,5 +34,3 @@
         <p id="message"></p>
     </div>
 </div>
-
-<button id="backButton" class="hide" onclick="goToUserSelection()">Back to user selection</button>
